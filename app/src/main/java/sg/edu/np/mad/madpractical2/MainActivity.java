@@ -1,6 +1,7 @@
 package sg.edu.np.mad.madpractical2;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -38,5 +39,19 @@ public class MainActivity extends AppCompatActivity {
         tvName.setText(user.name);
         tvDescription.setText(user.description);
         btnFollow.setText("Follow");
+
+        // Challenge 1
+        btnFollow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!user.followed && btnFollow.getText().toString().equals("Follow")) {
+                    btnFollow.setText("Unfollow");
+                    user.followed = true;
+                } else if (user.followed && btnFollow.getText().toString().equals("Unfollow")) {
+                    btnFollow.setText("Follow");
+                    user.followed = false;
+                }
+            }
+        });
     }
 }
